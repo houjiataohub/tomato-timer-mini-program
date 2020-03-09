@@ -1,7 +1,11 @@
 
-.timer {
+.roundclock {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.canvasclock {
+  display: flex;
+  justify-content: center;
 }

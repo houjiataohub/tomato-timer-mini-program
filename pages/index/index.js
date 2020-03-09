@@ -10,7 +10,7 @@ Page({
 
   },
   //事件处理函数
-  bindViewTap: function() {
+  addTimer: function() {
     wx.navigateTo({
       url: '../logs/logs'
     })
@@ -24,9 +24,9 @@ Page({
         that.width = res.windowWidth
         that.height = res.windowHeight
         that.setData({
-          canvasWidth: res.windowWidth * 0.9 * 0.52,
-          canvasHeight: res.windowWidth * 0.9 * 0.52 * 0.9819,
-          rightWidth: res.windowWidth * 0.9 * 0.47
+          canvasWidth: res.windowWidth,
+          canvasHeight: res.windowWidth * 0.9 * 0.90 * 0.9819,
+          rightWidth: res.windowWidth * 0.9 * 0.80
         })
       }
     })
@@ -47,18 +47,18 @@ Page({
     var R = this.data.canvasWidth / 5;
     ctx.save();
     // 把原点的位置移动到屏幕中间，及宽的一半，高的一半
-    ctx.translate(this.data.canvasWidth / 1.83, this.data.canvasHeight / 1.83);
+    ctx.translate(this.data.canvasWidth / 2, this.data.canvasHeight / 2);
 
     // 画外框
     function drawBackground() {
-      ctx.setStrokeStyle('#4BB5C3');
+      ctx.setStrokeStyle('#ff6347');
       // 设置线条的粗细，单位px
       ctx.setLineWidth(8);
       // 开始路径
       ctx.beginPath();
       // 运动一个圆的路径
       // arc(x,y,半径,起始位置，结束位置，false为顺时针运动)
-      ctx.arc(0, 0, R * 1.7, 0, 2 * Math.PI, false);
+      ctx.arc(0, 0, R * 1.6, 0, 2 * Math.PI, false);
       ctx.closePath();
       // 描出点的路径
       ctx.stroke();
@@ -73,13 +73,13 @@ Page({
         var x = R * Math.cos(rad);
         var y = R * Math.sin(rad);
         if (hour == 12) {
-          ctx.fillText(hour, x - 11, y + 6);
+          ctx.fillText(hour, x - 11, y - 3);
         } else if (hour == 6) {
-          ctx.fillText(hour, x - 5, y + 10);
+          ctx.fillText(hour, x - 5, y + 20);
         } else if (hour == 3) {
-          ctx.fillText(hour, x, y + 8);
+          ctx.fillText(hour, x + 8, y + 8);
         } else if (hour == 9) {
-          ctx.fillText(hour, x - 10, y + 8);
+          ctx.fillText(hour, x - 20, y + 8);
         }
         else {
           //ctx.fillText(hour, x - 6, y + 6);
@@ -91,8 +91,8 @@ Page({
     function drawdots() {
       for (let i = 0; i < 60; i++) {
         var rad = 2 * Math.PI / 60 * i;
-        var x = (R + 15) * Math.cos(rad);
-        var y = (R + 15) * Math.sin(rad);
+        var x = (R + 30) * Math.cos(rad);
+        var y = (R + 30) * Math.sin(rad);
         ctx.beginPath();
         // 每5个点一个比较大
         if (i % 5 == 0) {
@@ -162,7 +162,7 @@ Page({
       var mrad = 2 * Math.PI / 60 / 1000 * msecond;
       ctx.rotate(rad + mrad);
       ctx.setLineWidth(2);
-      ctx.setStrokeStyle('#4BB5C3');
+      ctx.setStrokeStyle('#ff6347');
       ctx.setLineCap('round');
       ctx.moveTo(0, 12);
       ctx.lineTo(0, -R);
