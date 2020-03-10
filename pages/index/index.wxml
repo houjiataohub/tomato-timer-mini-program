@@ -1,8 +1,6 @@
 <!--index.wxml-->
-<view class="container">
-
-  <view class="roundclock" style='width:100%;height:{{canvasHeight}}px'   catchtap='goCountdown'catchlongtap='touchstart' catchtouchend='touchend'>
-      <canvas class="canvasclock" canvas-id='clock' style='width:100%;height:{{canvasHeight}}px'></canvas>
-  </view>
-  
+<view class="container" >
+    <canvas class="canvasclock" canvas-id='clock' bindtap="toggleTimer"></canvas>
+    <canvas class="canvasprogress" canvas-id='canvasProgress' bindtap="toggleTimer"></canvas>
+    <canvas class="canvasline" canvas-id='canvasLine' bindtap="toggleTimer"></canvas>
 </view>
